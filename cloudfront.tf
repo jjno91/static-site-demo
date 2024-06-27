@@ -1,6 +1,5 @@
 resource "aws_cloudfront_distribution" "this" {
   enabled                = true
-  viewer_protocol_policy = "redirect-to-https"
 
   origin {
     origin_id   = "this"
@@ -8,9 +7,10 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   default_cache_behavior {
-    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "this"
+    allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "this"
+    viewer_protocol_policy = "redirect-to-https"
   }
 
   viewer_certificate {
