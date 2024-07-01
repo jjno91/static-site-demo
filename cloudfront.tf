@@ -1,5 +1,6 @@
 resource "aws_cloudfront_distribution" "this" {
-  enabled = true
+  enabled             = true
+  default_root_object = "index.html"
 
   origin {
     origin_id   = "this"
