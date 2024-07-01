@@ -11,9 +11,10 @@ resource "aws_s3_bucket_public_access_block" "this" {
 }
 
 resource "aws_s3_object" "this" {
-  bucket = aws_s3_bucket.this.bucket
-  key    = "index.html"
-  source = "index.html"
+  bucket       = aws_s3_bucket.this.bucket
+  key          = "index.html"
+  source       = "index.html"
+  content_type = "text/html"
 }
 
 resource "aws_s3_bucket_policy" "this" {
