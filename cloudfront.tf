@@ -4,6 +4,10 @@ resource "aws_cloudfront_distribution" "this" {
   origin {
     origin_id   = "this"
     domain_name = aws_s3_bucket.this.bucket_regional_domain_name
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.this.cloudfront_access_identity_path
+    }
   }
 
   default_cache_behavior {
@@ -27,3 +31,5 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 }
+
+resource "aws_cloudfront_origin_access_identity" "this" {}
