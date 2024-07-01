@@ -1,5 +1,5 @@
 resource "aws_cloudfront_distribution" "this" {
-  enabled                = true
+  enabled = true
 
   origin {
     origin_id   = "this"
